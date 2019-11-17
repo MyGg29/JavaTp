@@ -1,0 +1,38 @@
+[
+    {
+        "marque": "gwend",
+        "model": "PC5",
+        "cpu": {
+            "marque": "dues",
+            "model": "modelcpu",
+            "frequence": 10,
+            "cache": {
+                "capacite": 100000
+            }
+        },
+        "ram": {
+            "capacite": 10
+        },
+        "dd": {
+            "capacite": 200
+        }
+    },
+    {
+        "marque": "yann",
+        "model": "PC6",
+        "cpu": {
+            "marque": "dues",
+            "model": "modelcpu",
+            "frequence": 30,
+            "cache": {
+                "capacite": 9999
+            }
+        },
+        "ram": {
+            "capacite": 31
+        },
+        "dd": {
+            "capacite": 200
+        }
+    }
+]

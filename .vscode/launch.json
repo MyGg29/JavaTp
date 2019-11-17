@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - testPC",
+            "request": "launch",
+            "mainClass": "tests.testPC",
+            "projectName": "TPJava"
+        }
+    ]
+}
