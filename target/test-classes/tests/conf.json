@@ -15,6 +15,9 @@
         },
         "dd": {
             "capacite": 200
+        },
+        "flash": {
+            "capacite":12
         }
     },
     {
@@ -33,6 +36,9 @@
         },
         "dd": {
             "capacite": 200
+        },
+        "flash": {
+            "capacite":42
         }
     }
 ]

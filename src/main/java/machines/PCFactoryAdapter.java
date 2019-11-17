@@ -3,7 +3,6 @@ package machines;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +51,7 @@ public class PCFactoryAdapter {
         JSONObject cpuCacheConfObject = (JSONObject) cpuConfObject.get("cache");
         JSONObject ramConfObject = (JSONObject) jsonConf.get("ram");
         JSONObject ddConfObject = (JSONObject) jsonConf.get("dd");
+        JSONObject flashConfObject = (JSONObject) jsonConf.get("flash");
         conf.marque = (String)jsonConf.get("marque");
         conf.model = (String)jsonConf.get("model");
         conf.cpu.marque = (String) cpuConfObject.get("marque");
@@ -62,6 +62,7 @@ public class PCFactoryAdapter {
         conf.cpu.cache.capacite = new Long((long) cpuCacheConfObject.get("capacite")).doubleValue();
         conf.ram.capacite = new Long((long) ramConfObject.get("capacite")).doubleValue();
         conf.dd.capacite = new Long((long) ddConfObject.get("capacite")).doubleValue();
+        conf.flash.capacite = new Long((long) flashConfObject.get("capacite")).doubleValue();
 
         return conf;
     }

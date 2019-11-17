@@ -6,4 +6,5 @@ public class PCConf {
     public CPUConf cpu = new CPUConf();
     public RAMConf ram = new RAMConf();
     public DDConf dd = new DDConf();
+	public FlashConf flash = new FlashConf();
 }
