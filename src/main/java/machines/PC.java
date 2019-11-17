@@ -5,8 +5,11 @@ package machines;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PC  {
-	
+import machines.visitors.IVisitable;
+import machines.visitors.IVisitor;
+
+public class PC implements IVisitable {
+
 	/**
 	 * The flash memory
 	 */
@@ -69,7 +72,7 @@ public class PC  {
 	 * cpu setter
 	 */
 	public void setCpu(CPU newCpu) {
-		cpu = newCpu ;
+		cpu = newCpu;
 	}
 
 	/**
@@ -111,7 +114,7 @@ public class PC  {
 	 * ram setter
 	 */
 	public void setRAM(Memoire newRAM) {
-		ram = newRAM ;
+		ram = newRAM;
 	}
 
 	/**
@@ -125,21 +128,24 @@ public class PC  {
 	 * PC printer
 	 */
 	public String toString() {
-		String result  ="PC [\n"
-				+ "marque = " + marque + ",\n"
-				+ "modele = " + modele + ",\n"
-				+ "cpu = " + cpu.toString() + ",\n";
-		
-		if (flash!=null) {
-				result+= "flash = " + flash.toString() + ",\n";
+		String result = "PC [\n" + "marque = " + marque + ",\n" + "modele = " + modele + ",\n" + "cpu = "
+				+ cpu.toString() + ",\n";
+
+		if (flash != null) {
+			result += "flash = " + flash.toString() + ",\n";
 		}
-			result+=  "ram = " + ram.toString() + ",\n";
-		if (dd.size()>0) {	
-				for (Memoire memoire : dd) {
-					result+= "dd = " + memoire.toString();
-				}
+		result += "ram = " + ram.toString() + ",\n";
+		if (dd.size() > 0) {
+			for (Memoire memoire : dd) {
+				result += "dd = " + memoire.toString();
+			}
 		}
 		return result;
+	}
+
+	@Override
+	public void accept(IVisitor v) {
+		v.visit(this);
 	}
 
 } //PC

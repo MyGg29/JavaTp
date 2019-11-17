@@ -2,8 +2,10 @@
  */
 package machines;
 
+import machines.visitors.IVisitable;
+import machines.visitors.IVisitor;
 
-public class Memoire {
+public class Memoire implements IVisitable {
 	/**
 	 * The default value of the capacity attribute in byte
 	 */
@@ -19,7 +21,6 @@ public class Memoire {
 	 */
 	public Memoire() {
 	}
-
 
 	/**
 	 * capacity getter
@@ -46,6 +47,11 @@ public class Memoire {
 		result.append(capacite);
 		result.append(')');
 		return result.toString();
+	}
+
+	@Override
+	public void accept(IVisitor v) {
+		v.visit(this);
 	}
 
 } //Memoire

@@ -5,7 +5,10 @@ package machines;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CPU {
+import machines.visitors.IVisitable;
+import machines.visitors.IVisitor;
+
+public class CPU implements IVisitable {
 	/**
 	 * The default value of the frequence attribute in hertz
 	 */
@@ -82,6 +85,7 @@ public class CPU {
 
 	/**
 	 * cache getter
+	 * 
 	 * @generated
 	 */
 	public List<Memoire> getCache() {
@@ -103,6 +107,11 @@ public class CPU {
 		result.append(marque);
 		result.append(')');
 		return result.toString();
+	}
+
+	@Override
+	public void accept(IVisitor v) {
+		v.visit(this);
 	}
 
 } //CPUI
