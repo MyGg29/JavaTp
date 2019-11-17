@@ -3,6 +3,7 @@ package tests;
 import java.util.List;
 
 import machines.*;
+import machines.visitors.DrawVisitor;
 import machines.visitors.MachineVisitor;
 
 public class testPC {
@@ -18,8 +19,10 @@ public class testPC {
 		//now lets visit ours objects
 		MachineVisitor visitor1 = new MachineVisitor();
 		myPC.accept(visitor1);
-		myPC.getCpu().accept(visitor1);
-		myPC.getRAM().accept(visitor1);
+		DrawVisitor visitor2 = new DrawVisitor();
+		myPC.accept(visitor2);
+		myPC.getCpu().accept(visitor2);
+
 	}
 
 
