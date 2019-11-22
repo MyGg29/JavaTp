@@ -1,4 +1,4 @@
-package machines;
+package machines.factories;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,6 +11,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import machines.PC;
 import machines.conf.PCConf;
 
 public class PCFactoryAdapter {

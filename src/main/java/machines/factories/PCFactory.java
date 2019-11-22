@@ -1,6 +1,8 @@
-package machines;
+package machines.factories;
 
-
+import machines.CPU;
+import machines.Memoire;
+import machines.PC;
 import machines.conf.CPUConf;
 import machines.conf.CacheConf;
 import machines.conf.DDConf;

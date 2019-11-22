@@ -3,6 +3,8 @@ package tests;
 import java.util.List;
 
 import machines.*;
+import machines.factories.PCFactory;
+import machines.factories.PCFactoryAdapter;
 import machines.visitors.DrawVisitor;
 import machines.visitors.MachineVisitor;
 
