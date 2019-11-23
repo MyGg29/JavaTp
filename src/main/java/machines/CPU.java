@@ -32,13 +32,13 @@ public class CPU implements IVisitable {
 	/**
 	 * the cache memory
 	 */
-	protected List<Memoire> cache;
+	protected List<Memoire> caches;
 
 	/**
 	 * by-default constructor
 	 */
 	public CPU() {
-		cache = new ArrayList<Memoire>();
+		caches = new ArrayList<Memoire>();
 	}
 
 	/**
@@ -88,8 +88,8 @@ public class CPU implements IVisitable {
 	 * 
 	 * @generated
 	 */
-	public List<Memoire> getCache() {
-		return cache;
+	public List<Memoire> getCaches() {
+		return caches;
 	}
 
 	/**
@@ -105,6 +105,8 @@ public class CPU implements IVisitable {
 		result.append(modele);
 		result.append(", marque: ");
 		result.append(marque);
+		result.append(", caches: ");
+		result.append(caches);
 		result.append(')');
 		return result.toString();
 	}

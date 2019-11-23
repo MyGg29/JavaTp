@@ -6,16 +6,18 @@
             "marque": "dues",
             "model": "modelcpu",
             "frequence": 10,
-            "cache": {
+            "cache": [{
                 "capacite": 100000
-            }
+            }]
         },
         "ram": {
             "capacite": 10
         },
-        "dd": {
+        "dd": [{
             "capacite": 200
-        },
+        }, {
+            "capacite": 10
+        }],
         "flash": {
             "capacite":12
         }
@@ -27,16 +29,18 @@
             "marque": "dues",
             "model": "modelcpu",
             "frequence": 30,
-            "cache": {
+            "cache": [{
                 "capacite": 9999
-            }
+            }, {
+                "capacite": 4242
+            }]
         },
         "ram": {
             "capacite": 31
         },
-        "dd": {
+        "dd": [{
             "capacite": 200
-        },
+        }],
         "flash": {
             "capacite":42
         }

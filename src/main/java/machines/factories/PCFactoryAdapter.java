@@ -12,6 +12,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import machines.PC;
+import machines.conf.CacheConf;
+import machines.conf.DDConf;
 import machines.conf.PCConf;
 
 public class PCFactoryAdapter {
@@ -49,9 +51,9 @@ public class PCFactoryAdapter {
 	private static PCConf parseConfObject(JSONObject jsonConf) {
         PCConf conf = new PCConf();
         JSONObject cpuConfObject = (JSONObject) jsonConf.get("cpu");
-        JSONObject cpuCacheConfObject = (JSONObject) cpuConfObject.get("cache");
+        JSONArray cpuCachesConfArray = (JSONArray) cpuConfObject.get("cache");
         JSONObject ramConfObject = (JSONObject) jsonConf.get("ram");
-        JSONObject ddConfObject = (JSONObject) jsonConf.get("dd");
+        JSONArray ddsConfsArray = (JSONArray) jsonConf.get("dd");
         JSONObject flashConfObject = (JSONObject) jsonConf.get("flash");
         conf.marque = (String)jsonConf.get("marque");
         conf.model = (String)jsonConf.get("model");
@@ -60,9 +62,23 @@ public class PCFactoryAdapter {
         //the parser gives us longs when he sees numbers, 
         //we need to convert them to double to fill our interface
         conf.cpu.frequence = new Long((long) cpuConfObject.get("frequence")).doubleValue();
-        conf.cpu.cache.capacite = new Long((long) cpuCacheConfObject.get("capacite")).doubleValue();
+        conf.cpu.caches = new ArrayList<CacheConf>();
+        for (Object cpuCacheConf : cpuCachesConfArray) {
+            conf.cpu.caches.add(new CacheConf() {
+                {
+                    capacite = new Long((long) ((JSONObject) cpuCacheConf).get("capacite")).doubleValue();
+                }
+            });
+        }
         conf.ram.capacite = new Long((long) ramConfObject.get("capacite")).doubleValue();
-        conf.dd.capacite = new Long((long) ddConfObject.get("capacite")).doubleValue();
+        conf.dd = new ArrayList<DDConf>();
+        for (Object ddConf : ddsConfsArray) {
+            conf.dd.add(new DDConf() {
+                {
+                    capacite = new Long((long) ((JSONObject) ddConf).get("capacite")).doubleValue();
+                }
+            });
+        }
         conf.flash.capacite = new Long((long) flashConfObject.get("capacite")).doubleValue();
 
         return conf;

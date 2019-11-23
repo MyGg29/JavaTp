@@ -1,5 +1,8 @@
 package machines.factories;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import machines.CPU;
 import machines.Memoire;
 import machines.PC;
@@ -18,17 +21,17 @@ public class PCFactory {
     public PC createPC(PCConf conf) {
         PC myPC = new PC();
         // Create the standardConfig
-        Memoire cache = getCache(conf.cpu.cache);
-        CPU cpu = getCPU(conf.cpu, cache);
+        List<Memoire> caches = getCaches(conf.cpu.caches);
+        CPU cpu = getCPU(conf.cpu, caches);
         Memoire ram = getRam(conf.ram);
-        Memoire dd = getDD(conf.dd);
+        List<Memoire> dds = getDDs(conf.dd);
         Memoire flash = getFlash(conf.flash);
         myPC.setMarque(conf.marque);
         myPC.setModele(conf.model);
         myPC.setCpu(cpu);
         myPC.setRAM(ram);
         myPC.setFlash(flash);
-        myPC.getDD().add(dd);
+        myPC.getDD().addAll(dds);
 
         createdObjects++;
         return myPC;
@@ -42,10 +45,14 @@ public class PCFactory {
     public static int getNumberOfCreatedPc(){
         return createdObjects;
     }
-    private Memoire getDD(DDConf conf){
-		Memoire myDD = new Memoire();
-        myDD.setCapacite(conf.capacite);
-        return myDD;
+    private List<Memoire> getDDs(List<DDConf> confList){
+        List<Memoire> dds = new ArrayList<>();
+        for (DDConf ddConf : confList) {
+            Memoire myDD = new Memoire();
+            myDD.setCapacite(ddConf.capacite);
+            dds.add(myDD);
+        }
+        return dds;
     }
     private Memoire getFlash(FlashConf conf) {
         Memoire myFlash = new Memoire();
@@ -57,17 +64,21 @@ public class PCFactory {
         myRAM.setCapacite(conf.capacite);
         return myRAM;
     }
-    private Memoire getCache(CacheConf conf){
-		Memoire myCache = new Memoire();
-        myCache.setCapacite(conf.capacite);
-        return myCache;
+    private List<Memoire> getCaches(List<CacheConf> confList){
+        List<Memoire> caches = new ArrayList<>();
+        for (CacheConf conf : confList) {
+            Memoire myCache = new Memoire();
+            myCache.setCapacite(conf.capacite);
+            caches.add(myCache);
+        }
+        return caches;
     }
-    private CPU getCPU(CPUConf conf, Memoire cache){
+    private CPU getCPU(CPUConf conf, List<Memoire> caches){
 		CPU myCPU = new CPU();
 		myCPU.setMarque(conf.marque);
 		myCPU.setModele(conf.model);
         myCPU.setFrequence(conf.frequence);
-        myCPU.getCache().add(cache);
+        myCPU.getCaches().addAll(caches);
         return myCPU;
     }
 }

@@ -135,12 +135,10 @@ public class PC implements IVisitable {
 			result += "flash = " + flash.toString() + ",\n";
 		}
 		result += "ram = " + ram.toString() + ",\n";
-		if (dd.size() > 0) {
-			for (Memoire memoire : dd) {
-				result += "dd = " + memoire.toString();
-			}
+		for (Memoire memoire : dd) {
+			result += "dd = " + memoire.toString();
 		}
-		return result;
+		return result + "\n";
 	}
 
 	@Override
